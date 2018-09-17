@@ -1,0 +1,38 @@
+<div class="container" style="margin-bottom: 20px">
+    <div class="row" style="padding-bottom:20px;">
+        <div class="col-sm-4" style="float: right; margin-bottom: 20px">
+            <label>Prikaži vremensku prognozu grada <input type="text" ng-model="city" class="form-control" placeholder="Zagreb,HR"/></label>
+            <button type="button" class="btn" ng-click="DohvatiPrognozuGrada(city)">Prikaži</button>
+        </div>
+
+
+    <table class="table table-hover" ng-init="DohvatiPrognozuGrada('Zagreb')">
+        <thead>
+        <div ng-show="prikazi==true" class="ng-cloak">
+            <h4>Vremenska prognoza za {{oVrijeme[0].CityName}}, {{oVrijeme[0].CountryName}}</h4>
+            <h4>Koordinate: {{oVrijeme[0].lat}}° N, {{oVrijeme[0].lon}}° E</h4>
+        </div>
+        <tr>
+            <th>Datum i Vrijeme</th>
+            <th>Vrijeme</th>
+            <th>Opis</th>
+            <th>Temperatura</th>
+            <th>Pritisak</th>
+            <th>Vlaga</th>
+            <th>Brzina vjetra</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="value in oVrijeme">
+                <td>{{value.dt_txt | mydate | date: 'dd-MM-yyyy HH:mm'}}</td>
+                <td><img ng-src="http://openweathermap.org/img/w/{{value.icon}}.png">{{value.weather}}</td>
+                <td>{{value.description}}</td>
+                <td>{{value.temperature}} ℃</td>
+                <td>{{value.pressure}} mb</td>
+                <td>{{value.humidity}} %</td>
+                <td>{{value.speed}} km/h</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

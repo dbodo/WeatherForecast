@@ -1,0 +1,69 @@
+<div class="container">
+    <h4 style="float:left">Vremenska prognoza praćenih gradova</h4>
+         <div class="col-sm-4" style="float: right; margin-bottom: 20px">
+             <label>Zaprati novi grad<input type="text" class="form-control" ng-model="CityName" placeholder="Zagreb,HR"/></label>
+             <button class="btn" ng-click="DodajGrad()">Zaprati</button>
+         </div>
+        <table class="table table-hover" align="center" valign="middle">
+            <thead>
+                <tr>
+                    <th>Rbr.</th>
+                    <th>Grad</th>
+                    <th>Država</th>
+                    <th>Latituda</th>
+                    <th>Longituda</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key,value) in oGradovi" ng-click="PrikaziVremenskuPrognozu(value)">
+                <td>{{$index+1}}</td>
+                <td>{{value[0].CityName}}</td>
+                <td>{{value[0].CountryName}}</td>
+                <td>{{value[0].lat}}</td>
+                <td>{{value[0].lon}}</td>
+                <td><i class="fa fa-trash" ng-click="ObrisiGrad(value, $event)" aria-hidden="true"></i></td>
+            </tr>
+            </tbody>
+    </table>
+
+    <div class="modal fade" id="modals" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Vremenska prognoza za grad {{oPrognoza[0].CityName}},{{oPrognoza[0].CountryName}}</h4>
+                    <h4 class="modal-title">Koordinate: {{oPrognoza[0].lat}}° N, {{oPrognoza[0].lon}}° E</h4>
+                        <div class="modal-body">
+                            <table class="table table-hover" class="text-center">
+                                    <thead>
+                                    <tr>
+                                        <th>Datum i Vrijeme</th>
+                                        <th>Vrijeme</th>
+                                        <th>Opis</th>
+                                        <th>Temperatura</th>
+                                        <th>Pritisak</th>
+                                        <th>Vlaga</th>
+                                        <th>Brzina vjetra</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="prognoza in oPrognoza">
+                                        <td>{{prognoza.dt_txt | mydate | date: 'dd-MM-yyyy HH:mm'}}</td>
+                                        <td><img ng-src="http://openweathermap.org/img/w/{{prognoza.icon}}.png">{{prognoza.weather}}</td>
+                                        <td>{{prognoza.description}}</td>
+                                        <td>{{prognoza.temperature}} ℃</td>
+                                        <td>{{prognoza.pressure}} mb</td>
+                                        <td>{{prognoza.humidity}} %</td>
+                                        <td>{{prognoza.speed}} km/h</td>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

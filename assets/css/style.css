@@ -1,0 +1,76 @@
+html,body{width:100%}
+
+body
+{
+    background-color: #FCFCFC;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button{
+    font-weight: bold;
+    color: #FCFCFC;
+    text-shadow: 1px 1px 0px black;
+    background-color: rgba(248, 229, 54) !important;
+}
+
+.navbar{
+    border-radius: 0;
+    background-color: rgba(93, 97, 104);
+}
+
+.navbar .navbar-nav li a
+{
+    line-height: 50px;
+    color: rgba(248, 229, 54);
+}
+
+.navbar .navbar-nav .active a
+{
+    color: #FFFFFF;
+    text-shadow: 0 1px 1px black;
+}
+
+
+.navbar .navbar-nav .active a:focus
+{
+    color: #FFFFFF;
+    text-shadow: 0 1px 1px black;
+}
+
+.navbar .navbar-nav .active a:hover
+{
+    color: #FFFFFF;
+    text-shadow: 0 1px 1px black;
+}
+
+
+.navbar .navbar-nav li a:hover
+{
+    color: #FFFFFF;
+    text-shadow: 0 1px 1px black;
+}
+
+.logo{
+    font-family: 'Montserrat Alternates', sans-serif;
+    line-height: 50px;
+    color: rgba(248, 229, 54);
+    text-shadow: 1px -1px 0px rgba(0,0,0,.5);
+}
+
+
+h4{
+    font-weight: bold;
+}
+
+footer
+{
+    background-color: rgba(93, 97, 104);
+    color: rgba(144, 151, 160);
+    padding: 10px;
+    font-size: 11pt;
+    line-height: 50px;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
